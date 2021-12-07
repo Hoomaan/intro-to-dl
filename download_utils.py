@@ -71,9 +71,11 @@ def sequential_downloader(version, fns, target_dir):
 
 def link_all_files_from_dir(src_dir, dst_dir):
     os.makedirs(dst_dir, exist_ok=True)
-    if not os.path.exists(src_dir):
-        # Coursera "readonly/readonly" bug workaround
-        src_dir = src_dir.replace("readonly", "readonly/readonly")
+    os.makedirs(src_dir, exist_ok=True)
+
+#     if not os.path.exists(src_dir):
+#         # Coursera "readonly/readonly" bug workaround
+#         src_dir = src_dir.replace("readonly", "readonly/readonly")
     for fn in os.listdir(src_dir):
         src_file = os.path.join(src_dir, fn)
         dst_file = os.path.join(dst_dir, fn)
